@@ -21,8 +21,8 @@ struct CustomFont {
 }
 
 enum CustomFontType: String {
-    case font = "fonts"
-    case emoji = "emojis"
+    case font = "字体"
+    case emoji = "Emoji表情"
 }
 
 extension CustomFontsScene {
@@ -73,7 +73,7 @@ extension CustomFontsScene {
             } catch  {
                 print(error)
                 await MainActor.run {
-                    ProgressManager.shared.message = "Failed to read imported fonts."
+                    ProgressManager.shared.message = "无法读取导入的字体。"
                 }
             }
         }
