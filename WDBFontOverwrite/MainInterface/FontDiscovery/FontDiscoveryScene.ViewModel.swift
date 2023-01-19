@@ -47,7 +47,7 @@ extension FontDiscoveryScene {
                     ),
                     .init(
                         url: URL(string: "https://github.com/PoomSmart/EmojiFonts/releases")!,
-                        title: "Emoji表情库",
+                        title: "Emoji 表情库",
                         imageName: "face.smiling"
                     )
                 ]
