@@ -29,7 +29,7 @@ extension FontDiscoveryScene {
                     ),
                     .init(
                         url: URL(string: "https://bit.ly/3e3nJdm")!,
-                        title: "Font library",
+                        title: "字体库",
                         imageName: "books.vertical"
                     )
                 ]
@@ -47,7 +47,7 @@ extension FontDiscoveryScene {
                     ),
                     .init(
                         url: URL(string: "https://github.com/PoomSmart/EmojiFonts/releases")!,
-                        title: "Emoji library",
+                        title: "Emoji表情库",
                         imageName: "face.smiling"
                     )
                 ]
