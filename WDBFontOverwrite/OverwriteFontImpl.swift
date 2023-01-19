@@ -31,7 +31,7 @@ func overwriteWithFont(
     )
     
     await MainActor.run {
-        ProgressManager.shared.message = succeeded ? "Success: force close an app to see results" : "Failed"
+        ProgressManager.shared.message = succeeded ? "成功:强制关闭应用程序以查看结果" : "失败"
     }
 }
 
@@ -58,14 +58,14 @@ func overwriteWithFontImpl(
     // open and map original font
     let fd = open(pathToTargetFont, O_RDONLY | O_CLOEXEC)
     if fd == -1 {
-        print("can't open font?!")
+        print("不能打开字体?!")
         return false
     }
     defer { close(fd) }
     // check size of font
     let originalFontSize = lseek(fd, 0, SEEK_END)
     guard originalFontSize >= fontData.count else {
-        print("font too big!")
+        print("字体太大了!")
         return false
     }
     lseek(fd, 0, SEEK_SET)
@@ -91,12 +91,12 @@ func overwriteWithFontImpl(
     // Map the font we want to overwrite so we can mlock it
     let fontMap = mmap(nil, fontData.count, PROT_READ, MAP_SHARED, fd, 0)
     if fontMap == MAP_FAILED {
-        print("map failed")
+        print("映射失败")
         return false
     }
     // mlock so the file gets cached in memory
     guard mlock(fontMap, fontData.count) == 0 else {
-        print("can't mlock")
+        print("不能锁定内存")
         return false
     }
     
@@ -125,10 +125,10 @@ func overwriteWithFontImpl(
                 overwroteOne = true
                 break
             }
-            print("try again?!")
+            print("再试一次?!")
         }
         guard overwroteOne else {
-            print("can't overwrite")
+            print("不能覆盖")
             return false
         }
     }
@@ -136,7 +136,7 @@ func overwriteWithFontImpl(
         ProgressManager.shared.completedProgress = Double(fontData.count)
     }
     print(Date())
-    print("successfully overwrote everything")
+    print("成功覆盖所有字体")
     return true
 }
 
@@ -162,7 +162,7 @@ func overwriteWithCustomFont(
     let fontURL = documentDirectory.appendingPathComponent(name)
     guard FileManager.default.fileExists(atPath: fontURL.path) else {
         await MainActor.run {
-            ProgressManager.shared.message = "No custom font imported"
+            ProgressManager.shared.message = "没有导入自定义字体"
         }
         return
     }
@@ -184,7 +184,7 @@ func overwriteWithCustomFont(
         }
     default:
         await MainActor.run {
-            ProgressManager.shared.message = "Either targetName or targetNames must be provided"
+            ProgressManager.shared.message = "必须提供targetName或targetNames"
         }
     }
 }
@@ -207,7 +207,7 @@ func importCustomFontImpl(
     if first16k.count == 0x4000 && first16k[0..<4] == Data([0x77, 0x4f, 0x46, 0x32])
         && first16k[0x3fff] == 0x41
     {
-        print("already padded WOFF2")
+        print("已填充 WOFF2")
         try? FileManager.default.removeItem(at: targetURL)
         try! FileManager.default.copyItem(at: fileURL, to: targetURL)
         return nil
@@ -254,14 +254,14 @@ func repackTrueTypeFontAsPaddedWoff2(input: Data) -> Data? {
         WOFF2WrapperConvertTTFToWOFF2([UInt8](input), input.count, $0.baseAddress, &outputLength)
     }
     guard woff2Result else {
-        print("woff2 convert failed")
+        print("woff2 转换失败")
         return nil
     }
     let woff2Data = Data(bytes: outputBuffer, count: outputLength)
     do {
         return try repackWoff2Font(input: woff2Data)
     } catch {
-        print("error: \(error).")
+        print("错误: \(error).")
         return nil
     }
 }
