@@ -12,7 +12,7 @@ final class ProgressManager: ObservableObject {
     static let shared = ProgressManager()
     @Published var completedProgress: Double = 0
     @Published var totalProgress: Double = 0
-    @Published var message: String = "Choose a font."
+    @Published var message: String = "选择一种字体。"
     
     var isBusy: Bool = false {
         didSet {
