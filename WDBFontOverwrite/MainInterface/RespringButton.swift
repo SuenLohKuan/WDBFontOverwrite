@@ -14,7 +14,7 @@ struct RespringButton: View {
         } label: {
             AlignedRowContentView(
                 imageName: "arrow.triangle.2.circlepath",
-                text: "Restart SpringBoard"
+                text: "注销重启"
             )
         }
     }
