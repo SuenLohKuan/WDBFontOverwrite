@@ -22,7 +22,7 @@ struct FileEditorView: View {
                             await viewModel.populateFiles()
                         }
                     } label: {
-                        Image(systemName: "trash")
+                        Image(systemName: "清空")
                             .padding()
                             .foregroundColor(.white)
                             .background(Color.red)
@@ -36,18 +36,18 @@ struct FileEditorView: View {
                     Button {
                         viewModel.isVisibleRemoveAllAlert = true
                     } label: {
-                        Image(systemName: "trash")
+                        Image(systemName: "清空")
                             .foregroundColor(.red)
                     }
                 }
             }
-            .navigationTitle("Imported fonts (\(viewModel.files.count))")
+            .navigationTitle("导入的字体 (\(viewModel.files.count))")
         }
         .alert(isPresented: $viewModel.isVisibleRemoveAllAlert) {
             Alert(
-                title: Text("Remove all"),
-                message: Text("Are you sure you want to remove all imported font files?"),
-                primaryButton: .destructive(Text("Remove all")) {
+                title: Text("全部删除"),
+                message: Text("您确定要移除所有导入的字体文件吗？"),
+                primaryButton: .destructive(Text("全部删除")) {
                     viewModel.removeAllFiles()
                     Task {
                         await viewModel.populateFiles()
