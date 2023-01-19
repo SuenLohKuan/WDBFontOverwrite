@@ -60,7 +60,7 @@ private extension PresetFontsScene {
         } header: {
             Text("开始")
         } footer: {
-            Text("Originally created by [@zhuowei](https://twitter.com/zhuowei). Updated & maintained by [@GinsuDev](https://twitter.com/GinsuDev).")
+            Text("最初创建者 [@zhuowei](https://twitter.com/zhuowei). 更新和维护者 [@GinsuDev](https://twitter.com/GinsuDev).汉化[@SuenLohKuan](https://twitter.com/SuenLohKuan).")
         }
     }
 }
