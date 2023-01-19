@@ -16,7 +16,7 @@ struct FontDiscoveryScene: View {
                 VStack(spacing: 10) {
                     ExplanationView(
                         systemImage: "star.fill",
-                        description: "Find fonts and emojis from these talented developers and themers.",
+                        description: "从这些才华横溢的开发者和主题中寻找字体和表情符号。",
                         canShowProgress: false
                     )
                     ForEach(viewModel.descriptors, id: \.name) { descriptor in
@@ -29,7 +29,7 @@ struct FontDiscoveryScene: View {
                     Spacer()
                 }
             }
-            .navigationTitle("Discovery")
+            .navigationTitle("发现")
         }
         .navigationViewStyle(.stack)
     }
