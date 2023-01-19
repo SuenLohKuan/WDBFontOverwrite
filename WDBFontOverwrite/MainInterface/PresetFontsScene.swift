@@ -16,7 +16,7 @@ struct PresetFontsScene: View {
                 Section {
                     ExplanationView(
                         systemImage: "textformat",
-                        description: "Choose from a selection of preset fonts.",
+                        description: "从预设字体中进行选择。",
                         canShowProgress: true
                     )
                 }
@@ -37,7 +37,7 @@ private extension PresetFontsScene {
                 Button {
                     Task {
                         await MainActor.run {
-                            ProgressManager.shared.message = "Running"
+                            ProgressManager.shared.message = "运行中"
                         }
                         await overwriteWithFont(name: font.repackedPath)
                     }
@@ -50,7 +50,7 @@ private extension PresetFontsScene {
                 }
             }
         } header: {
-            Text("Fonts")
+            Text("字体")
         }
     }
     
@@ -58,7 +58,7 @@ private extension PresetFontsScene {
         Section {
             RespringButton()
         } header: {
-            Text("Actions")
+            Text("开始")
         } footer: {
             Text("Originally created by [@zhuowei](https://twitter.com/zhuowei). Updated & maintained by [@GinsuDev](https://twitter.com/GinsuDev).")
         }
