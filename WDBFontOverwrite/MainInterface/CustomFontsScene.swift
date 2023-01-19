@@ -20,7 +20,7 @@ struct CustomFontsScene: View {
                     Section {
                         ExplanationView(
                             systemImage: "textformat",
-                            description: "Import & manage custom fonts that have been ported to iOS.",
+                            description: "导入和管理已移植到iOS的自定义字体。",
                             canShowProgress: true
                         )
                     }
@@ -46,7 +46,7 @@ struct CustomFontsScene: View {
                 do {
                     try await FontMap.populateFontMap()
                 } catch {
-                    progressManager.message = "Error: Unable to populate font map."
+                    progressManager.message = "错误:无法填充字体映射。"
                 }
             }
         }
@@ -56,49 +56,49 @@ struct CustomFontsScene: View {
     private var fontsList: some View {
         Section {
             Picker("Custom fonts", selection: $viewModel.customFontPickerSelection) {
-                Text("Custom font")
+                Text("自定义字体")
                     .tag(0)
-                Text("Custom Emoji")
+                Text("自定义Emoji表情")
                     .tag(1)
             }
             .pickerStyle(.segmented)
             
             Button {
-                progressManager.message = "Importing..."
+                progressManager.message = "导入中..."
                 viewModel.importTTCRepackMode = .woff2
                 viewModel.importPresented = true
             } label: {
                 AlignedRowContentView(
                     imageName: "square.and.arrow.down",
-                    text: "Import custom \(viewModel.selectedCustomFontType.rawValue)"
+                    text: "导入自定义 \(viewModel.selectedCustomFontType.rawValue)"
                 )
             }
             if viewModel.selectedCustomFontType == .font {
                 Button {
-                    progressManager.message = "Importing..."
+                    progressManager.message = "导入中..."
                     viewModel.importTTCRepackMode = .ttcpad
                     viewModel.importPresented = true
                 } label: {
                     AlignedRowContentView(
                         imageName: "square.and.arrow.down",
-                        text: "Import custom \(viewModel.selectedCustomFontType.rawValue) with fix for .ttc"
+                        text: "导入自定义 \(viewModel.selectedCustomFontType.rawValue) with fix for .ttc"
                     )
                 }
             }
             Button {
                 progressManager.isBusy = true
-                progressManager.message = "Running"
+                progressManager.message = "运行中"
                 Task {
                     await viewModel.batchOverwriteFonts()
                 }
             } label: {
                 AlignedRowContentView(
                     imageName: "checkmark.circle",
-                    text: "Apply \(viewModel.selectedCustomFontType.rawValue)"
+                    text: "应用 \(viewModel.selectedCustomFontType.rawValue)"
                 )
             }
         } header: {
-            Text("Fonts")
+            Text("字体")
         }
     }
     
@@ -109,14 +109,14 @@ struct CustomFontsScene: View {
             } label: {
                 AlignedRowContentView(
                     imageName: "doc.badge.gearshape",
-                    text: "Manage imported fonts"
+                    text: "管理导入的字体"
                 )
             }
             RespringButton()
         } header: {
-            Text("Actions")
+            Text("开始")
         } footer: {
-            Text("Originally created by [@zhuowei](https://twitter.com/zhuowei). Updated & maintained by [@GinsuDev](https://twitter.com/GinsuDev).")
+            Text("最初创建者 [@zhuowei](https://twitter.com/zhuowei). 更新和维护者 [@GinsuDev](https://twitter.com/GinsuDev).汉化[@SuenLohKuan](https://twitter.com/SuenLohKuan).")
         }
     }
 }
