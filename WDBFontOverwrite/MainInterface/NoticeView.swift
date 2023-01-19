@@ -9,13 +9,13 @@ import SwiftUI
 
 enum Notice: String {
     /// iOS not supported msg.
-    case iosVersion = "iOS version not supported. Don't ask us to support newer versions because the exploit used just simply does not support newer iOS versions."
+    case iosVersion = "不支持的iOS版本。不要要求我们支持新版本，因为所使用的漏洞根本不支持新的iOS版本"
     
     /// Custom font pre-usage info.
-    case beforeUse = "Custom fonts require font files that are ported for iOS. See https://github.com/ginsudev/WDBFontOverwrite for details."
+    case beforeUse = "自定字体需要为iOS移植的字体文件。详情见 https://github.com/ginsudev/WDBFontOverwrite for details."
     
     /// Keyboard cache issue msg.
-    case keyboard = "Keyboard fonts may not be applied immediately due to iOS caching issues. IF POSSIBLE, remove the folder /var/mobile/Library/Caches/com.apple.keyboards/ if you wish for changes to take effect immediately."
+    case keyboard = "由于iOS缓存问题，键盘字体可能不会立即应用。如果可能，删除该文件夹 /var/mobile/Library/Caches/com.apple.keyboards/ if you wish for changes to take effect immediately."
 }
 
 struct NoticeView: View {
