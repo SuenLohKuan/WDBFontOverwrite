@@ -26,7 +26,7 @@ extension FontDiscoveryCard {
                 let image = handleResponse(data: data, response: response)
                 return image
             } catch {
-                print("Unable to load avatar for card")
+                print("无法加载卡片的头像")
                 return nil
             }
         }
@@ -36,7 +36,7 @@ extension FontDiscoveryCard {
                   let image = UIImage(data: data),
                   let response = response as? HTTPURLResponse,
                   (200..<300).contains(response.statusCode) else {
-                    print("No image")
+                    print("没有图像")
                     return nil
             }
             return image
