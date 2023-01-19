@@ -16,15 +16,15 @@ struct WDBFontOverwriteApp: App {
             TabView {
                 PresetFontsScene()
                     .tabItem {
-                        Label("Presets", systemImage: "list.dash")
+                        Label("预设", systemImage: "list.dash")
                     }
                 CustomFontsScene()
                     .tabItem {
-                        Label("Custom", systemImage: "plus")
+                        Label("自定义", systemImage: "plus")
                     }
                 FontDiscoveryScene()
                     .tabItem {
-                        Label("Discovery", systemImage: "star")
+                        Label("发现", systemImage: "star")
                     }
             }
             .environmentObject(progressManager)
