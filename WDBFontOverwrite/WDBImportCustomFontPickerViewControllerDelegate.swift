@@ -24,7 +24,7 @@ class WDBImportCustomFontPickerViewControllerDelegate: NSObject, UIDocumentPicke
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        ProgressManager.shared.message = "Cancelled"
+        ProgressManager.shared.message = "取消"
     }
     
     private func importSelectedFonts(atURLs urls: [URL]) async {
@@ -53,10 +53,10 @@ class WDBImportCustomFontPickerViewControllerDelegate: NSObject, UIDocumentPicke
         }
 
         ProgressManager.shared.message = String(
-            format: "Successfully imported %d/%d files.%@",
+            format: "成功导入 %d/%d 文件.%@",
             successfullyImportedCount,
             urls.count,
-            successfullyImportedCount == urls.count ? "" : " Some files were skipped because your device doesn't have those fonts or because they don't support your iOS/device."
+            successfullyImportedCount == urls.count ? "" : " 跳过了某些文件，因为您的设备没有这些字体，或者因为它们不支持您的iOS设备。"
         )
     }
     
